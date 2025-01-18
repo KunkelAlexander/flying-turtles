@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca5thwukmu30v"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_2fqf1"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(470, 261)
+script = ExtResource("1_2fqf1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 498.0
+offset_top = 306.0
+offset_right = 593.0
+offset_bottom = 329.0
+text = "Hello World!"
