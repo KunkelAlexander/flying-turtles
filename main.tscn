@@ -1,20 +1,143 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca5thwukmu30v"]
+[gd_scene load_steps=24 format=3 uid="uid://ca5thwukmu30v"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_2fqf1"]
-[ext_resource type="Texture2D" uid="uid://bttyetsm47bwc" path="res://assets/player/onlyrocket.svg" id="2_bcd8t"]
+[ext_resource type="Texture2D" uid="uid://bditovqgmqut0" path="res://assets/player/turtle_rocket.png" id="2_mg161"]
+[ext_resource type="Shader" path="res://rocket_colour.gdshader" id="2_ypiex"]
+[ext_resource type="Texture2D" uid="uid://bmb27rs1kbhob" path="res://assets/player/turtle_retrack.png" id="3_3veo4"]
 [ext_resource type="Script" path="res://move_sprite_2d.gd" id="3_etbvn"]
 [ext_resource type="Texture2D" uid="uid://dch1jmgbmmvim" path="res://assets/environment/environment_forestbackground.png" id="4_0ggjj"]
+[ext_resource type="Texture2D" uid="uid://dtkg6vo3h0gl8" path="res://assets/player/turtle_walk.png" id="4_t4vd2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mge4e"]
+shader = ExtResource("2_ypiex")
+shader_parameter/transparent_color = Vector4(0.01, 0.545, 0.855, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae8yh"]
+atlas = ExtResource("2_mg161")
+region = Rect2(0, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkfgy"]
+atlas = ExtResource("2_mg161")
+region = Rect2(66, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1usa"]
+atlas = ExtResource("2_mg161")
+region = Rect2(132, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4us2r"]
+atlas = ExtResource("3_3veo4")
+region = Rect2(0, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjncv"]
+atlas = ExtResource("3_3veo4")
+region = Rect2(66, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4gfb"]
+atlas = ExtResource("3_3veo4")
+region = Rect2(132, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfjjt"]
+atlas = ExtResource("3_3veo4")
+region = Rect2(198, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dukxr"]
+atlas = ExtResource("3_3veo4")
+region = Rect2(264, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khefu"]
+atlas = ExtResource("4_t4vd2")
+region = Rect2(0, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ktrb"]
+atlas = ExtResource("4_t4vd2")
+region = Rect2(66, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulfy2"]
+atlas = ExtResource("4_t4vd2")
+region = Rect2(132, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmopk"]
+atlas = ExtResource("4_t4vd2")
+region = Rect2(198, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6kch"]
+atlas = ExtResource("4_t4vd2")
+region = Rect2(264, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnsou"]
+atlas = ExtResource("4_t4vd2")
+region = Rect2(330, 0, 66, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1kylb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae8yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkfgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1usa")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4us2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjncv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4gfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfjjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dukxr")
+}],
+"loop": true,
+"name": &"hide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khefu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ktrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulfy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmopk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6kch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnsou")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="BaseNode" type="Node"]
 script = ExtResource("1_2fqf1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(156.378, 501.78)
-rotation = 1.5708
-scale = Vector2(0.379701, 0.384082)
-texture = ExtResource("2_bcd8t")
-region_enabled = true
-region_rect = Rect2(271, 304.476, 209, 428.116)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_mge4e")
+scale = Vector2(4, 3.704)
+sprite_frames = SubResource("SpriteFrames_1kylb")
+animation = &"walk"
+frame_progress = 0.435916
 script = ExtResource("3_etbvn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
