@@ -3,7 +3,8 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D  # Reference to the sprite
 @onready var crash_label: Label = $"../CrashLabel"
 @onready var start_position   = $AnimatedSprite2D/start_position.global_position
-
+@onready var collision_walk = $CollisionShape_Walk
+@onready var collision_fly = $CollisionShape_Fly
 # Rocket parameters
 var speed = 400.0            # forward (upward) speed when under control
 var rotation_speed = 90.0    # degrees per second
@@ -29,7 +30,20 @@ func _ready():
 	# Initialize position and crash label
 	_initialize_position()
 	_initialize_crash_label()
+	_set_collision_shape("walk")  # Initialize with the walking shape
 
+
+func _set_collision_shape(animation_name: String):
+	# Disable all collision shapes
+	collision_walk.disabled = true
+	collision_fly.disabled = true
+
+	# Enable the appropriate shape based on the animation
+	match animation_name:
+		"walk":
+			collision_walk.disabled = true
+		"fly":
+			collision_fly.disabled = false
 
 func _initialize_position():
 	position = start_position
@@ -51,9 +65,11 @@ func _enter_state(new_state):
 			free_fall_timer = 0.0
 			velocity = Vector2.ZERO
 			animated_sprite.play("fly")
+			_set_collision_shape("fly")
 		State.FALLING:
 			free_fall_timer = 0.0  # Reset the free-fall timer
 			animated_sprite.play("hide")
+			_set_collision_shape("walk")
 		State.CRASHED:
 			velocity = Vector2.ZERO
 			crash_label.visible = true
@@ -61,6 +77,7 @@ func _enter_state(new_state):
 			velocity = Vector2.ZERO
 			rotation_degrees = 0  # Reset to rightward orientation
 			animated_sprite.play("walk")
+			_set_collision_shape("walk")
 
 
 
