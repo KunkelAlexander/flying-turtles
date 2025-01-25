@@ -8,7 +8,7 @@ var rocket_position: Vector2
 
 func _process(delta):
 	# Update key variables (for demonstration purposes)
-	rocket_position = $Sprite2D.position
+	rocket_position = $CharacterBody2D.global_position
 
 	# Update the debug label's text
 	debug_label.text = """
