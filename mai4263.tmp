@@ -311,6 +311,74 @@ sources/0 = SubResource("TileSetAtlasSource_xnpmp")
 [node name="BaseNode" type="Node"]
 script = ExtResource("1_2fqf1")
 
+[node name="Player1" parent="." instance=ExtResource("2_ayu33")]
+collision_mask = 7
+
+[node name="Player2" parent="." instance=ExtResource("2_ayu33")]
+position = Vector2(1677.36, 914.38)
+rotation = -3.14159
+scale = Vector2(1, -1)
+collision_mask = 7
+player_number = 2
+orientation = -1.0
+
+[node name="Game" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Game"]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 3.0
+offset_right = -2.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0ggjj")
+stretch_mode = 6
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Game"]
+z_index = -1
+position = Vector2(-0.585815, 3)
+tile_map_data = PackedByteArray("AAABAA8AAAACAAYAAAACAA8AAAACAAYAAAADAA8AAAACAAYAAAAEAA8AAAACAAYAAAAFAA8AAAACAAYAAAAGAA8AAAACAAYAAAAHAA8AAAACAAYAAAAIAA8AAAACAAYAAAAJAA8AAAACAAYAAAAKAA8AAAACAAYAAAALAA8AAAACAAYAAAAMAA8AAAACAAYAAAANAA8AAAACAAYAAAAOAA8AAAACAAYAAAAPAA8AAAACAAYAAAAQAA8AAAACAAYAAAARAA8AAAACAAYAAAASAA8AAAACAAYAAAATAA8AAAACAAYAAAAUAA8AAAACAAYAAAAVAA8AAAACAAYAAAAWAA8AAAACAAYAAAAXAA8AAAACAAYAAAAYAA8AAAACAAYAAAAZAA8AAAACAAYAAAAaAA8AAAACAAYAAAAbAA8AAAACAAYAAAAcAA8AAAACAAYAAAAAAA8AAAABAAYAAAAdAA8AAAADAAYAAAAAABAAAAAAAAYAAAABABAAAAAAAAYAAAACABAAAAAAAAYAAAADABAAAAAAAAYAAAAEABAAAAAAAAYAAAAFABAAAAAAAAYAAAAGABAAAAAAAAYAAAAHABAAAAAAAAYAAAAIABAAAAAAAAYAAAAJABAAAAAAAAYAAAAKABAAAAAAAAYAAAALABAAAAAAAAYAAAAMABAAAAAAAAYAAAANABAAAAAAAAYAAAAOABAAAAAAAAYAAAAPABAAAAAAAAYAAAAQABAAAAAAAAYAAAARABAAAAAAAAYAAAASABAAAAAAAAYAAAATABAAAAAAAAYAAAAUABAAAAAAAAYAAAAVABAAAAAAAAYAAAAWABAAAAAAAAYAAAAXABAAAAAAAAYAAAAYABAAAAAAAAYAAAAZABAAAAAAAAYAAAAaABAAAAAAAAYAAAAbABAAAAAAAAYAAAAcABAAAAAAAAYAAAAdABAAAAAAAAYAAAALAA4AAAAJAAQAAAAQAA4AAAAJAAQAAAATAA4AAAAJAAQAAAAXAA4AAAAJAAQAAAAHAA4AAAAJAAUAAAAcAA4AAAAJAAUAAAAUAA4AAAAJAAUAAAAOAAYAAAACAAYAAAAPAAYAAAACAAYAAAAQAAYAAAACAAYAAAARAAYAAAACAAYAAAASAAYAAAACAAYAAAANAAYAAAABAAYAAAATAAYAAAADAAYAAAA=")
+tile_set = SubResource("TileSet_jqmc4")
+
+[node name="CrashLabel" type="Label" parent="Game"]
+visible = false
+offset_left = 75.2354
+offset_top = 55.9339
+offset_right = 850.235
+offset_bottom = 358.934
+theme_override_font_sizes/font_size = 47
+text = "Rocket crashed! 
+Press enter to restart!"
+
+[node name="ScoreLabel" type="Label" parent="Game"]
+visible = false
+offset_left = 637.415
+offset_top = 252.112
+offset_right = 677.415
+offset_bottom = 275.112
+scale = Vector2(15.9502, -10.4384)
+text = "0:0"
+horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Game"]
+visible = false
+
+[node name="Label" type="Label" parent="Game/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="MainMenu" type="CanvasLayer" parent="."]
 script = ExtResource("5_5c7p5")
 
@@ -467,71 +535,3 @@ theme_override_fonts/font = ExtResource("6_wv65e")
 theme_override_font_sizes/font_size = 56
 text = "Shoot: Z"
 alignment = 0
-
-[node name="Player1" parent="." instance=ExtResource("2_ayu33")]
-collision_mask = 7
-
-[node name="Player2" parent="." instance=ExtResource("2_ayu33")]
-position = Vector2(1677.36, 914.38)
-rotation = -3.14159
-scale = Vector2(1, -1)
-collision_mask = 7
-player_number = 2
-orientation = -1.0
-
-[node name="Environment" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Environment"]
-visible = false
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = 3.0
-offset_right = -2.0
-offset_bottom = 123.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_0ggjj")
-stretch_mode = 6
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Environment"]
-z_index = -1
-position = Vector2(-0.585815, 3)
-tile_map_data = PackedByteArray("AAABAA8AAAACAAYAAAACAA8AAAACAAYAAAADAA8AAAACAAYAAAAEAA8AAAACAAYAAAAFAA8AAAACAAYAAAAGAA8AAAACAAYAAAAHAA8AAAACAAYAAAAIAA8AAAACAAYAAAAJAA8AAAACAAYAAAAKAA8AAAACAAYAAAALAA8AAAACAAYAAAAMAA8AAAACAAYAAAANAA8AAAACAAYAAAAOAA8AAAACAAYAAAAPAA8AAAACAAYAAAAQAA8AAAACAAYAAAARAA8AAAACAAYAAAASAA8AAAACAAYAAAATAA8AAAACAAYAAAAUAA8AAAACAAYAAAAVAA8AAAACAAYAAAAWAA8AAAACAAYAAAAXAA8AAAACAAYAAAAYAA8AAAACAAYAAAAZAA8AAAACAAYAAAAaAA8AAAACAAYAAAAbAA8AAAACAAYAAAAcAA8AAAACAAYAAAAAAA8AAAABAAYAAAAdAA8AAAADAAYAAAAAABAAAAAAAAYAAAABABAAAAAAAAYAAAACABAAAAAAAAYAAAADABAAAAAAAAYAAAAEABAAAAAAAAYAAAAFABAAAAAAAAYAAAAGABAAAAAAAAYAAAAHABAAAAAAAAYAAAAIABAAAAAAAAYAAAAJABAAAAAAAAYAAAAKABAAAAAAAAYAAAALABAAAAAAAAYAAAAMABAAAAAAAAYAAAANABAAAAAAAAYAAAAOABAAAAAAAAYAAAAPABAAAAAAAAYAAAAQABAAAAAAAAYAAAARABAAAAAAAAYAAAASABAAAAAAAAYAAAATABAAAAAAAAYAAAAUABAAAAAAAAYAAAAVABAAAAAAAAYAAAAWABAAAAAAAAYAAAAXABAAAAAAAAYAAAAYABAAAAAAAAYAAAAZABAAAAAAAAYAAAAaABAAAAAAAAYAAAAbABAAAAAAAAYAAAAcABAAAAAAAAYAAAAdABAAAAAAAAYAAAALAA4AAAAJAAQAAAAQAA4AAAAJAAQAAAATAA4AAAAJAAQAAAAXAA4AAAAJAAQAAAAHAA4AAAAJAAUAAAAcAA4AAAAJAAUAAAAUAA4AAAAJAAUAAAAOAAYAAAACAAYAAAAPAAYAAAACAAYAAAAQAAYAAAACAAYAAAARAAYAAAACAAYAAAASAAYAAAACAAYAAAANAAYAAAABAAYAAAATAAYAAAADAAYAAAA=")
-tile_set = SubResource("TileSet_jqmc4")
-
-[node name="CrashLabel" type="Label" parent="Environment"]
-visible = false
-offset_left = 75.2354
-offset_top = 55.9339
-offset_right = 850.235
-offset_bottom = 358.934
-theme_override_font_sizes/font_size = 47
-text = "Rocket crashed! 
-Press enter to restart!"
-
-[node name="ScoreLabel" type="Label" parent="Environment"]
-visible = false
-offset_left = 637.415
-offset_top = 252.112
-offset_right = 677.415
-offset_bottom = 275.112
-scale = Vector2(15.9502, -10.4384)
-text = "0:0"
-horizontal_alignment = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Environment"]
-visible = false
-
-[node name="Label" type="Label" parent="Environment/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
