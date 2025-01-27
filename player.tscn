@@ -264,7 +264,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_mge4e")
 scale = Vector2(4.949, 4.8)
 sprite_frames = SubResource("SpriteFrames_1kylb")
-animation = &"walk"
+animation = &"explode"
 speed_scale = 2.0
 
 [node name="start_position" type="Node2D" parent="AnimatedSprite2D"]

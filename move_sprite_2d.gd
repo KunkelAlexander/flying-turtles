@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var base_node = get_parent()  # Reference to the BaseNode
 
 @export var player_number: int = 1  # Player identifier
 
@@ -28,7 +29,7 @@ var top_boundary = -50
 
 # Game States
 enum State { CONTROLLED, FALLING, CRASHED, WALKING }
-var state = State.WALKING    # Start in the walking state
+var state   # Start in the walking state
 
 # Free-fall timer
 var free_fall_duration = 2.8
@@ -63,6 +64,8 @@ func _set_collision_shape(animation_name: String):
 			collision_walk.disabled = true
 		"fly":
 			collision_fly.disabled = false
+		"hide":
+			collision_walk.disabled = false
 
 func _initialize_position():
 	position = start_position
@@ -72,7 +75,6 @@ func _initialize_position():
 
 func _initialize_crash_label():
 	crash_label.visible = false
-	crash_label.text = "Rocket crashed.\nPress Enter to restart."
 	
 func _initialize_score_label():
 	score_label.visible = true
@@ -80,6 +82,9 @@ func _initialize_score_label():
 	
 # --- State Transitions ---
 func _enter_state(new_state):
+	if state == new_state:
+		return 
+		
 	state = new_state
 	match state:
 		State.CONTROLLED:
@@ -90,11 +95,14 @@ func _enter_state(new_state):
 		State.FALLING:
 			free_fall_timer = 0.0  # Reset the free-fall timer
 			animated_sprite.play("hide")
-			_set_collision_shape("walk")
+			_set_collision_shape("hide")
 		State.CRASHED:
 			animated_sprite.play("explode")
 			velocity = Vector2.ZERO
 			crash_label.visible = true
+			crash_label.text = "P%d crashed.\nShoot\nto restart." % [player_number]
+			base_node.update_score("player%d" % [player_number])  # Update score when Player 1 crashes
+
 		State.WALKING:
 			# Prevent the rocket from leaving the ground
 			position.y = start_position.y
@@ -124,6 +132,7 @@ func _process_input(delta):
 			# Lift off
 			_enter_state(State.CONTROLLED)
 
+				
 func shoot_energy_ball():
 	# Instance the energy ball
 	var energy_ball = energy_ball_scene.instantiate()
@@ -193,17 +202,18 @@ func _update_physics(delta):
 			velocity.y += gravity * delta
 			move_and_slide()
 
-
-			if position.y > start_position.y:
+			for i in get_slide_collision_count():
 				_enter_state(State.CRASHED)
+				break
+
 			if free_fall_timer >= free_fall_duration:
 				_enter_state(State.CONTROLLED)
 
+
 		State.CRASHED:
 			# Wait for restart input
-			if Input.is_action_just_pressed("ui_accept"):
+			if Input.is_action_just_pressed("p%d_shoot" % [player_number]):
 				_restart_rocket()
-
 		
 	_wrap_position(viewport_size)
 
