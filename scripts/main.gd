@@ -22,7 +22,7 @@ func _input(event):
 		if Global.game_started: 
 			_reset_game()
 		else:
-			get_tree().quit()
+			_reset_game()
 	elif event.is_action_pressed("ui_accept") and not game_active:  # Enter to restart
 		_reset_game()
 
