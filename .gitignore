@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+*.tmp
+.gitattributes
+*.svg
+*.zip
+addons
+assets/junk
+exports/
