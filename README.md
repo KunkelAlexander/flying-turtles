@@ -3,6 +3,7 @@
 
 Welcome to the **2D Multiplayer Rocket Game**! This project is a simple, fast-paced, and fun 2-player game where players control rockets, dodge obstacles, and compete to score points by outmaneuvering each other. Built using the [Godot Engine](https://godotengine.org/), it features customizable controls, responsive physics, and a clean, modular structure.
 
+![](splashscreen.png)
 ---
 
 ## Features
@@ -36,32 +37,24 @@ Welcome to the **2D Multiplayer Rocket Game**! This project is a simple, fast-pa
 ### Directory Overview
 ```plaintext
 ├── scenes/            # All game scenes
-│   ├── MainMenu.tscn   # The main menu scene
-│   ├── Player.tscn     # The player rocket scenes
-│   ├── Environment.tscn # Game environment and UI
-│   └── EnergyBall.tscn # Energy ball prefab
+│   ├── main.tscn      # The main game scene + menu
+│   ├── player.tscn     # The player rocket scenes
+│   └── energy_ball.tscn # Energy ball
 ├── scripts/           # All game scripts
-│   ├── managers/       # Game and input management
-│   ├── players/        # Player logic and controls
-│   └── ui/             # UI-specific scripts
 ├── assets/            # Assets for the game
 │   ├── sprites/        # Sprites for players, UI, etc.
-│   ├── audio/          # Sound effects and music
 │   └── fonts/          # Fonts for UI elements
 └── README.md          # Project README
 ```
 
 ### Key Scripts
 
-- **`BaseNode.gd`**:
+- **`main.gd`**:
   - Manages overall game logic, including scores, reset logic, and state transitions.
-- **`Player.gd`**:
+- **`player.gd`**:
   - Controls individual player behavior, such as movement, shooting, and physics.
-- **`MainMenu.gd`**:
+- **`main_menu.gd`**:
   - Handles input rebinding and navigation in the main menu.
-- **`ScoreManager.gd`** (optional):
-  - Centralizes score tracking and updates.
-
 ---
 
 ## Getting Started

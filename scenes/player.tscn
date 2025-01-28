@@ -1,9 +1,9 @@
 [gd_scene load_steps=41 format=3 uid="uid://blevcbgd4ugyc"]
 
-[ext_resource type="Script" path="res://scripts/move_sprite_2d.gd" id="1_jlpho"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jlpho"]
 [ext_resource type="PackedScene" uid="uid://c6x4qkj62sd04" path="res://scenes/energy_ball.tscn" id="2_s42k3"]
 [ext_resource type="Shader" path="res://rocket_colour.gdshader" id="3_ukgnl"]
-[ext_resource type="Texture2D" uid="uid://djqskch2lua60" path="res://assets/player/exp2_0.png" id="4_ehls1"]
+[ext_resource type="Texture2D" path="res://assets/player/exp2_0.png" id="4_ehls1"]
 [ext_resource type="Texture2D" uid="uid://bditovqgmqut0" path="res://assets/player/turtle_rocket.png" id="5_loy1n"]
 [ext_resource type="Texture2D" uid="uid://bmb27rs1kbhob" path="res://assets/player/turtle_retrack.png" id="6_lxgx7"]
 [ext_resource type="Texture2D" uid="uid://dtkg6vo3h0gl8" path="res://assets/player/turtle_walk.png" id="7_iu7lo"]

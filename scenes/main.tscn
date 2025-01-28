@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/control.gd" id="4_fwonn"]
 [ext_resource type="PackedScene" uid="uid://blevcbgd4ugyc" path="res://scenes/player.tscn" id="5_yws47"]
 [ext_resource type="Texture2D" uid="uid://cxp7vk8imjwqt" path="res://assets/environment/bg_jungle_lr.png" id="6_btl1f"]
-[ext_resource type="Texture2D" uid="uid://cl08lp5mbvm6p" path="res://assets/environment/tilesheet_complete.png" id="7_kie31"]
+[ext_resource type="Texture2D" path="res://assets/environment/tilesheet_complete.png" id="7_kie31"]
 [ext_resource type="Texture2D" uid="uid://bprs7x4ipnwa0" path="res://assets/environment/tilesheet_lr.png" id="8_8u02r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xnpmp"]
@@ -627,7 +627,6 @@ sources/1 = SubResource("TileSetAtlasSource_44530")
 script = ExtResource("1_judag")
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("2_y00r3")
 
 [node name="GameTitle" type="Label" parent="MainMenu"]
@@ -696,6 +695,7 @@ theme_override_font_sizes/font_size = 72
 text = "..."
 
 [node name="Attributions" type="Label" parent="MainMenu"]
+z_index = 1
 offset_left = 256.0
 offset_top = 896.0
 offset_right = 1664.0
