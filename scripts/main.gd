@@ -6,7 +6,8 @@ extends Node
 @onready var environment = $Environment
 
 @onready var score_label = $Environment/ScoreLabel
-@onready var winner_label = $Environment/CrashLabel
+@onready var winner_screen = $Environment/WinnerScreen
+@onready var winner_label = $Environment/WinnerScreen/WinnerLabel
 
 var score = { "player1": 0, "player2": 0 }
 var max_score = 2
@@ -18,7 +19,10 @@ func _ready():
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):  # ESC key
-		_reset_game()
+		if Global.game_started: 
+			_reset_game()
+		else:
+			get_tree().quit()
 	elif event.is_action_pressed("ui_accept") and not game_active:  # Enter to restart
 		_reset_game()
 
@@ -36,12 +40,12 @@ func update_score(player_crashed: String):
 func _check_winner():
 	if score["player1"] >= max_score:
 		game_active = false
-		winner_label.text = "Player 1 wins!\nPress Enter\nto restart."
-		winner_label.visible = true
+		winner_label.text = "P1 wins!\nPress Enter."
+		winner_screen.visible = true
 	elif score["player2"] >= max_score:
 		game_active = false
-		winner_label.text = "Player 2 wins!\nPress Enter\nto restart."
-		winner_label.visible = true
+		winner_label.text = "P2 wins!\nPress Enter."
+		winner_screen.visible = true
 
 
 func _reset_game():
@@ -60,7 +64,7 @@ func _reset_game():
 
 	# Reset labels
 	score_label.text = "0:0"
-	winner_label.visible = false
+	winner_screen.visible = false
 
 	# Show the main menu
 	main_menu.visible = true

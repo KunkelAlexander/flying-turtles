@@ -25,7 +25,13 @@ func _physics_process(delta):
 	_wrap_position(viewport_size)
 
 func _on_body_entered(body):
-	# Remove the energy ball upon collision
+	
+	if body.is_in_group("Player"):  # Check if the body belongs to the 'Player' group
+		body._enter_state(body.State.CRASHED)
+		
+	# Remove the energy ball upon collisio
+	queue_free()
+	
 	pass
 
 

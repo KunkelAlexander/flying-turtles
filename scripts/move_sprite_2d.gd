@@ -5,7 +5,10 @@ extends CharacterBody2D
 @export var player_number: int = 1  # Player identifier
 
 @onready var animated_sprite = $AnimatedSprite2D  # Reference to the sprite
-@onready var crash_label: Label = $"../Environment/CrashLabel"
+@onready var crash_labels: Dictionary = {
+	1: $"../Environment/P1CrashLabel",
+	2: $"../Environment/P2CrashLabel",
+}  # Map player numbers to crash labels
 @onready var score_label: Label = $"../Environment/ScoreLabel"
 @onready var start_position   = $AnimatedSprite2D/start_position.global_position
 @onready var collision_walk = $CollisionShape_Walk
@@ -37,8 +40,14 @@ var free_fall_timer = 0.0
 var max_landing_angle = 15   # Maximum angle to safely land (in degrees)
 
 # --- Setup ---
+
+
+# Method to get the appropriate crash label
+func get_crash_label() -> Label:
+	return crash_labels.get(player_number, null)  # Default to null if player_number doesn't exist
+
+
 func _ready():
-	
 	_initialize()
 	
 func _initialize(): 
@@ -74,6 +83,7 @@ func _initialize_position():
 	animated_sprite.play("walk")
 
 func _initialize_crash_label():
+	var crash_label = get_crash_label()
 	crash_label.visible = false
 	
 func _initialize_score_label():
@@ -99,6 +109,7 @@ func _enter_state(new_state):
 		State.CRASHED:
 			animated_sprite.play("explode")
 			velocity = Vector2.ZERO
+			var crash_label = get_crash_label()
 			crash_label.visible = true
 			crash_label.text = "P%d crashed.\nShoot\nto restart." % [player_number]
 			base_node.update_score("player%d" % [player_number])  # Update score when Player 1 crashes
@@ -168,26 +179,29 @@ func _update_physics(delta):
 			
 			
 			for i in get_slide_collision_count():
-				_enter_state(State.CRASHED)
+				
+				var safe_landing = true
+				var no_takeoff = true
+				
+				if player_number == 1: 
+					no_takeoff   = rotation_degrees > 0
+					safe_landing = rotation_degrees < max_landing_angle
+				if player_number == 2: 
+					no_takeoff   = rotation_degrees > 0
+					safe_landing = rotation_degrees > 180 - max_landing_angle and rotation_degrees <= 180
+
+				if position.y > start_position.y - 100 and no_takeoff:
+					if safe_landing:
+						_enter_state(State.WALKING)  # Land safely
+						break
+					else:
+						_enter_state(State.CRASHED)
+				else:
+					_enter_state(State.CRASHED)
 
 			if position.y < top_boundary:
 				_enter_state(State.FALLING)
 				
-			var safe_landing = true
-			var no_takeoff = true
-			
-			if player_number == 1: 
-				no_takeoff   = rotation_degrees > 0
-				safe_landing = rotation_degrees < max_landing_angle
-			if player_number == 2: 
-				no_takeoff   = rotation_degrees > 0
-				safe_landing = rotation_degrees > 180 - max_landing_angle and rotation_degrees <= 180
-
-			if position.y > start_position.y - 100 and no_takeoff:
-				if safe_landing:
-					_enter_state(State.WALKING)  # Land safely
-				else:
-					_enter_state(State.CRASHED)
 				
 		State.WALKING:
 			_process_input(delta)

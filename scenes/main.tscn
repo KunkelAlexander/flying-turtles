@@ -1,16 +1,16 @@
 [gd_scene load_steps=12 format=4 uid="uid://ca5thwukmu30v"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_2fqf1"]
-[ext_resource type="PackedScene" uid="uid://blevcbgd4ugyc" path="res://player.tscn" id="2_ayu33"]
-[ext_resource type="Texture2D" uid="uid://dch1jmgbmmvim" path="res://assets/environment/environment_forestbackground.png" id="4_0ggjj"]
-[ext_resource type="Script" path="res://main_menu.gd" id="5_5c7p5"]
-[ext_resource type="FontFile" uid="uid://ee7xbhgb8w64" path="res://assets/fonts/PressStart2P.ttf" id="6_wv65e"]
-[ext_resource type="Script" path="res://control.gd" id="7_tl8ii"]
-[ext_resource type="Texture2D" uid="uid://bprs7x4ipnwa0" path="res://assets/environment/tilesheet_lr.png" id="8_cl2y7"]
-[ext_resource type="Texture2D" uid="uid://cl08lp5mbvm6p" path="res://assets/environment/tilesheet_complete.png" id="8_la7nc"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_judag"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="2_y00r3"]
+[ext_resource type="FontFile" uid="uid://ee7xbhgb8w64" path="res://assets/fonts/PressStart2P.ttf" id="3_cjmvt"]
+[ext_resource type="Script" path="res://scripts/control.gd" id="4_fwonn"]
+[ext_resource type="PackedScene" uid="uid://blevcbgd4ugyc" path="res://scenes/player.tscn" id="5_yws47"]
+[ext_resource type="Texture2D" uid="uid://cxp7vk8imjwqt" path="res://assets/environment/bg_jungle_lr.png" id="6_btl1f"]
+[ext_resource type="Texture2D" uid="uid://cl08lp5mbvm6p" path="res://assets/environment/tilesheet_complete.png" id="7_kie31"]
+[ext_resource type="Texture2D" uid="uid://bprs7x4ipnwa0" path="res://assets/environment/tilesheet_lr.png" id="8_8u02r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xnpmp"]
-texture = ExtResource("8_la7nc")
+texture = ExtResource("7_kie31")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -304,7 +304,7 @@ texture_region_size = Vector2i(64, 64)
 21:11/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44530"]
-texture = ExtResource("8_cl2y7")
+texture = ExtResource("8_8u02r")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -521,14 +521,23 @@ texture_region_size = Vector2i(64, 64)
 20:8/0 = 0
 21:8/0 = 0
 0:9/0 = 0
+0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:9/0 = 0
+1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:9/0 = 0
+2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 3:9/0 = 0
+3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 4:9/0 = 0
+4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 5:9/0 = 0
+5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 6:9/0 = 0
+6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 7:9/0 = 0
+7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 8:9/0 = 0
+8:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 9:9/0 = 0
 10:9/0 = 0
 11:9/0 = 0
@@ -545,14 +554,23 @@ texture_region_size = Vector2i(64, 64)
 20:9/0 = 0
 21:9/0 = 0
 0:10/0 = 0
+0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:10/0 = 0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:10/0 = 0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 3:10/0 = 0
+3:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 4:10/0 = 0
+4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 5:10/0 = 0
+5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 6:10/0 = 0
+6:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 7:10/0 = 0
+7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 8:10/0 = 0
+8:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 9:10/0 = 0
 10:10/0 = 0
 11:10/0 = 0
@@ -567,14 +585,23 @@ texture_region_size = Vector2i(64, 64)
 20:10/0 = 0
 21:10/0 = 0
 0:11/0 = 0
+0:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:11/0 = 0
+1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:11/0 = 0
+2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 3:11/0 = 0
+3:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 4:11/0 = 0
+4:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 5:11/0 = 0
+5:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 6:11/0 = 0
+6:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 7:11/0 = 0
+7:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 8:11/0 = 0
+8:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 9:11/0 = 0
 10:11/0 = 0
 11:11/0 = 0
@@ -597,11 +624,11 @@ sources/0 = SubResource("TileSetAtlasSource_xnpmp")
 sources/1 = SubResource("TileSetAtlasSource_44530")
 
 [node name="BaseNode" type="Node"]
-script = ExtResource("1_2fqf1")
+script = ExtResource("1_judag")
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 visible = false
-script = ExtResource("5_5c7p5")
+script = ExtResource("2_y00r3")
 
 [node name="GameTitle" type="Label" parent="MainMenu"]
 z_index = 1
@@ -609,10 +636,10 @@ offset_left = 128.0
 offset_top = 128.0
 offset_right = 1792.0
 offset_bottom = 270.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 28
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 112
 text = "Flying Turtles"
 
@@ -625,7 +652,7 @@ offset_bottom = 456.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 56
 text = "Player 1"
 horizontal_alignment = 1
@@ -639,7 +666,7 @@ offset_bottom = 456.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 56
 text = "Player 2"
 horizontal_alignment = 1
@@ -653,7 +680,7 @@ offset_bottom = 896.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 72
 text = "Press enter to start"
 
@@ -664,44 +691,50 @@ offset_top = 768.0
 offset_right = 1816.0
 offset_bottom = 840.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 72
 text = "..."
 
-[node name="ColorRect" type="ColorRect" parent="MainMenu"]
+[node name="Attributions" type="Label" parent="MainMenu"]
+offset_left = 256.0
+offset_top = 896.0
+offset_right = 1664.0
+offset_bottom = 1024.0
+theme_override_fonts/font = ExtResource("3_cjmvt")
+theme_override_font_sizes/font_size = 20
+text = "Attributions. : 
+https://opengameart.org/content/high-res-fire-ball
+https://opengameart.org/content/explosion
+https://opengameart.org/content/2d-platformer-jungle-pack
+Tio Aimar @ opengameart.org
+https://www.kenney.nl/assets/abstract-platformer
+"
+
+[node name="Background" type="ColorRect" parent="MainMenu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.00736)
-color = Color(0, 0, 0, 0.831373)
-
-[node name="Label2" type="Label" parent="MainMenu"]
-offset_left = 256.0
-offset_top = 896.0
-offset_right = 1664.0
-offset_bottom = 1024.0
-theme_override_fonts/font = ExtResource("6_wv65e")
-theme_override_font_sizes/font_size = 24
-text = "Credits: "
+color = Color(0, 0, 0, 0.945098)
 
 [node name="Control" type="Control" parent="MainMenu"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("7_tl8ii")
+script = ExtResource("4_fwonn")
 
 [node name="UpP1" type="Button" parent="MainMenu/Control"]
 z_index = 1
 layout_mode = 0
 offset_left = 128.0
 offset_top = 512.0
-offset_right = 576.0
+offset_right = 640.0
 offset_bottom = 576.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 48
 text = "Up:Z"
 alignment = 0
@@ -711,10 +744,10 @@ z_index = 1
 layout_mode = 0
 offset_left = 128.0
 offset_top = 576.0
-offset_right = 576.0
+offset_right = 640.0
 offset_bottom = 640.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 48
 text = "Down: D"
 alignment = 0
@@ -724,10 +757,10 @@ z_index = 1
 layout_mode = 0
 offset_left = 128.0
 offset_top = 640.0
-offset_right = 584.0
+offset_right = 640.0
 offset_bottom = 704.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 48
 text = "Shoot: Z"
 alignment = 0
@@ -737,10 +770,10 @@ z_index = 1
 layout_mode = 0
 offset_left = 1024.0
 offset_top = 512.0
-offset_right = 1472.0
+offset_right = 1536.0
 offset_bottom = 576.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 48
 text = "Up: Z"
 alignment = 0
@@ -750,10 +783,10 @@ z_index = 1
 layout_mode = 0
 offset_left = 1024.0
 offset_top = 576.0
-offset_right = 1472.0
+offset_right = 1536.0
 offset_bottom = 640.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 48
 text = "Down: D"
 alignment = 0
@@ -763,18 +796,18 @@ z_index = 1
 layout_mode = 0
 offset_left = 1024.0
 offset_top = 640.0
-offset_right = 1480.0
+offset_right = 1536.0
 offset_bottom = 704.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 48
 text = "Shoot: Z"
 alignment = 0
 
-[node name="Player1" parent="." instance=ExtResource("2_ayu33")]
+[node name="Player1" parent="." groups=["Player"] instance=ExtResource("5_yws47")]
 collision_mask = 7
 
-[node name="Player2" parent="." instance=ExtResource("2_ayu33")]
+[node name="Player2" parent="." groups=["Player"] instance=ExtResource("5_yws47")]
 position = Vector2(1677.36, 914.38)
 rotation = -3.14159
 scale = Vector2(1, -1)
@@ -789,9 +822,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Environment"]
-visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -803,26 +836,15 @@ offset_right = -2.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_0ggjj")
+texture = ExtResource("6_btl1f")
 stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Environment"]
 z_index = -1
 position = Vector2(-0.585815, 3)
-tile_map_data = PackedByteArray("AAABAA8AAQACAAYAAAACAA8AAQACAAYAAAADAA8AAQACAAYAAAAEAA8AAQACAAYAAAAFAA8AAQACAAYAAAAGAA8AAQACAAYAAAAHAA8AAQACAAYAAAAIAA8AAAACAAYAAAAJAA8AAAACAAYAAAAKAA8AAAACAAYAAAALAA8AAAACAAYAAAAMAA8AAAACAAYAAAANAA8AAAACAAYAAAAOAA8AAAACAAYAAAAPAA8AAAACAAYAAAAQAA8AAAACAAYAAAARAA8AAAACAAYAAAASAA8AAAACAAYAAAATAA8AAAACAAYAAAAUAA8AAAACAAYAAAAVAA8AAAACAAYAAAAWAA8AAAACAAYAAAAXAA8AAAACAAYAAAAYAA8AAAACAAYAAAAZAA8AAAACAAYAAAAaAA8AAAACAAYAAAAbAA8AAAACAAYAAAAcAA8AAQACAAYAAAAAAA8AAQABAAYAAAAdAA8AAQADAAYAAAAAABAAAQAAAAYAAAABABAAAQAAAAYAAAACABAAAQAAAAYAAAADABAAAQAAAAYAAAAEABAAAQAAAAYAAAAFABAAAQAAAAYAAAAGABAAAQAAAAYAAAAHABAAAQAAAAYAAAAIABAAAQAAAAYAAAAJABAAAQAAAAYAAAAKABAAAQAAAAYAAAALABAAAQAAAAYAAAAMABAAAQAAAAYAAAANABAAAQAAAAYAAAAOABAAAQAAAAYAAAAPABAAAQAAAAYAAAAQABAAAQAAAAYAAAARABAAAQAAAAYAAAASABAAAQAAAAYAAAATABAAAQAAAAYAAAAUABAAAQAAAAYAAAAVABAAAQAAAAYAAAAWABAAAQAAAAYAAAAXABAAAQAAAAYAAAAYABAAAQAAAAYAAAAZABAAAQAAAAYAAAAaABAAAQAAAAYAAAAbABAAAQAAAAYAAAAcABAAAQAAAAYAAAAdABAAAQAAAAYAAAALAA4AAQAJAAQAAAAQAA4AAQARAAIAAAATAA4AAQAJAAQAAAAXAA4AAQAJAAQAAAAHAA4AAQAJAAUAAAAcAA4AAQAJAAUAAAAUAA4AAQAJAAUAAAAOAAYAAQAGAAYAAAAPAAYAAQAGAAYAAAAQAAYAAQAGAAYAAAARAAYAAQAGAAYAAAASAAYAAQAGAAYAAAANAAYAAQAFAAYAAAATAAYAAQAHAAYAAAANAAUAAQANAAkAAAAOAAUAAQANAAkAAAAPAAUAAQANAAkAAAARAAUAAQANAAkAAAAQAAUAAQANAAkAAAASAAUAAQANAAkAAAATAAUAAQANAAkAAAAQAA0AAQARAAIAAAAQAAwAAQARAAIAAAAQAAsAAQARAAIAAAAQAAoAAQASAAMAAAAPAAoAAQASAAQAAAAOAAoAAQASAAQAAAANAAoAAQASAAQAAAAMAAoAAQASAAQAAAALAAoAAQASAAQAAAAKAAoAAQARAAQAAAAKAAgAAQASAAMAAAAKAAkAAQASAAMAAAALAAkAAQASAAQAAAAMAAkAAQATAAQAAAAIAAsAAQATAAIAAAAWAA4AAQATAAIAAAAWAA0AAQATAAIAAAAWAAwAAQATAAIAAAAdAA4AAQATAAIAAAAdAA0AAQATAAIAAAAdAAwAAQATAAIAAAAdAAsAAQATAAIAAAAdAAoAAQATAAIAAAAdAAkAAQATAAIAAAABAA4AAQATAAIAAAABAA0AAQATAAIAAAABAAwAAQATAAIAAAABAAsAAQATAAIAAAABAAoAAQARAAMAAAABAAkAAQATAAIAAAABAAgAAQATAAIAAAABAAcAAQATAAIAAAABAAYAAQATAAIAAAABAAUAAQATAAIAAAAHAAcAAQAUAAEAAAAGAAkAAQASAAQAAAAHAAkAAQASAAQAAAAIAAkAAQASAAMAAAAUAAgAAQARAAMAAAAVAAgAAQASAAQAAAAWAAgAAQASAAQAAAAXAAgAAQASAAQAAAATAAoAAQASAAQAAAAUAAoAAQATAAQAAAAIAAQAAQATAAEAAAAKAAcAAQATAAEAAAADAAUAAQATAAEAAAABAAMAAQATAAEAAAABAAQAAQATAAEAAAAaAAcAAQASAAEAAAAFAAgAAQASAAEAAAAMAAgAAQASAAEAAAAQAAMAAQASAAEAAAAQAAkAAQAUAAEAAAADAAYAAQAVAAAAAAADAAcAAQAVAAAAAAADAAgAAQAVAAAAAAACAAoAAQASAAQAAAADAAkAAQARAAMAAAADAAoAAQATAAQAAAAEAAkAAQASAAQAAAAFAAkAAQASAAMAAAAFAAoAAQARAAQAAAAGAAoAAQASAAQAAAAHAAoAAQASAAQAAAAIAAoAAQATAAMAAAAHAAgAAQARAAQAAAAIAAgAAQASAAMAAAAIAAcAAQASAAIAAAAIAAYAAQASAAIAAAAIAAUAAQASAAIAAAAIAAwAAQASAAIAAAAIAA0AAQASAAIAAAAIAA4AAQASAAIAAAAJAAkAAQASAAQAAAAJAAgAAQASAAQAAAARAAoAAQASAAQAAAASAAoAAQASAAQAAAAYAAgAAQASAAQAAAAZAAgAAQASAAQAAAAaAAgAAQATAAQAAAAUAAkAAQASAAIAAAAUAAcAAQAVAAAAAAAUAAYAAQAVAAAAAAAUAAUAAQAVAAAAAAAUAAQAAQATAAMAAAARAAQAAQASAAQAAAASAAQAAQASAAQAAAATAAQAAQASAAQAAAAQAAQAAQARAAQAAAAUAAMAAQAUAAEAAAAWAAsAAQATAAEAAAAdAAgAAQATAAEAAAA=")
+tile_map_data = PackedByteArray("AAABAA8AAQACAAkAAAACAA8AAQACAAkAAAADAA8AAQACAAkAAAAEAA8AAQACAAkAAAAFAA8AAQACAAkAAAAGAA8AAQACAAkAAAAHAA8AAQACAAkAAAAIAA8AAQACAAkAAAAJAA8AAQACAAkAAAAKAA8AAQACAAkAAAALAA8AAQACAAkAAAAMAA8AAQACAAkAAAANAA8AAQACAAkAAAAOAA8AAQACAAkAAAAPAA8AAQACAAkAAAAQAA8AAQACAAkAAAARAA8AAQACAAkAAAASAA8AAQACAAkAAAATAA8AAQACAAkAAAAUAA8AAQACAAkAAAAVAA8AAQACAAkAAAAWAA8AAQACAAkAAAAXAA8AAQACAAkAAAAYAA8AAQACAAkAAAAZAA8AAQACAAkAAAAaAA8AAQACAAkAAAAbAA8AAQACAAkAAAAcAA8AAQACAAkAAAAAAA8AAQABAAkAAAAdAA8AAQADAAkAAAAAABAAAQAAAAkAAAABABAAAQAAAAkAAAACABAAAQAAAAkAAAADABAAAQAAAAkAAAAEABAAAQAAAAkAAAAFABAAAQAAAAkAAAAGABAAAQAAAAkAAAAHABAAAQAAAAkAAAAIABAAAQAAAAkAAAAJABAAAQAAAAkAAAAKABAAAQAAAAkAAAALABAAAQAAAAkAAAAMABAAAQAAAAkAAAANABAAAQAAAAkAAAAOABAAAQAAAAkAAAAPABAAAQAAAAkAAAAQABAAAQAAAAkAAAARABAAAQAAAAkAAAASABAAAQAAAAkAAAATABAAAQAAAAkAAAAUABAAAQAAAAkAAAAVABAAAQAAAAkAAAAWABAAAQAAAAkAAAAXABAAAQAAAAkAAAAYABAAAQAAAAkAAAAZABAAAQAAAAkAAAAaABAAAQAAAAkAAAAbABAAAQAAAAkAAAAcABAAAQAAAAkAAAAdABAAAQAAAAkAAAALAA4AAQALAAMAAAAQAA4AAQAKAAMAAAATAA4AAQALAAMAAAAXAA4AAQALAAMAAAAHAA4AAQALAAMAAAAcAA4AAQAKAAMAAAAUAA4AAQAKAAMAAAAOAAYAAQACAAkAAAAPAAYAAQACAAkAAAAQAAYAAQACAAkAAAARAAYAAQACAAkAAAASAAYAAQACAAkAAAANAAYAAQAHAAoAAAATAAYAAQAIAAoAAAANAAUAAQANAAkAAAAOAAUAAQANAAkAAAAPAAUAAQANAAkAAAARAAUAAQANAAkAAAAQAAUAAQANAAkAAAASAAUAAQANAAkAAAATAAUAAQANAAkAAAAIAAsAAQATAAIAAAAdAA4AAQATAAIAAAAdAA0AAQATAAIAAAAdAAwAAQATAAIAAAAdAAsAAQATAAIAAAAdAAoAAQATAAIAAAAdAAkAAQATAAIAAAABAA4AAQATAAIAAAABAA0AAQATAAIAAAABAAwAAQASAAEAAAAIAAwAAQASAAIAAAAIAA0AAQASAAIAAAAIAA4AAQASAAIAAAAdAAgAAQATAAEAAAAIAAoAAQASAAEAAAANAA4AAQAVAAMAAAANAA0AAQAUAAEAAAA=")
 tile_set = SubResource("TileSet_jqmc4")
-
-[node name="CrashLabel" type="Label" parent="Environment"]
-layout_mode = 0
-offset_left = 75.2354
-offset_top = 55.9339
-offset_right = 850.235
-offset_bottom = 358.934
-theme_override_fonts/font = ExtResource("6_wv65e")
-theme_override_font_sizes/font_size = 47
-text = "Player 1 crashed! 
-Press enter
-to restart!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Environment"]
 visible = false
@@ -832,6 +854,8 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="ScoreLabel" type="Label" parent="Environment"]
+visible = false
+layout_mode = 0
 offset_left = 704.0
 offset_top = 64.0
 offset_right = 1280.0
@@ -839,7 +863,57 @@ offset_bottom = 192.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
-theme_override_fonts/font = ExtResource("6_wv65e")
+theme_override_fonts/font = ExtResource("3_cjmvt")
 theme_override_font_sizes/font_size = 128
 text = "2:6"
 horizontal_alignment = 1
+
+[node name="P1CrashLabel" type="Label" parent="Environment"]
+visible = false
+layout_mode = 0
+offset_left = 75.0
+offset_top = 56.0
+offset_right = 640.0
+offset_bottom = 203.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_cjmvt")
+theme_override_font_sizes/font_size = 47
+text = "P1 crashed! 
+Press enter
+to restart!"
+
+[node name="P2CrashLabel" type="Label" parent="Environment"]
+visible = false
+layout_mode = 0
+offset_left = 1344.0
+offset_top = 64.0
+offset_right = 1861.0
+offset_bottom = 211.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_cjmvt")
+theme_override_font_sizes/font_size = 47
+text = "P1 crashed! 
+Press enter
+to restart!"
+
+[node name="WinnerScreen" type="ColorRect" parent="Environment"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+color = Color(0, 0, 0, 0.815686)
+
+[node name="WinnerLabel" type="Label" parent="Environment/WinnerScreen"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/font = ExtResource("3_cjmvt")
+theme_override_font_sizes/font_size = 128
+text = "P1 wins!"
+horizontal_alignment = 1
+vertical_alignment = 1

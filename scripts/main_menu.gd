@@ -20,7 +20,7 @@ func _process(delta):
 		blink_timer = 0.0  # Reset the timer
 		
 
-func _input(event):
+func _input(event):			
 	if not Global.game_started:  # Access the global variable
 		if event.is_action_pressed("ui_accept"):  # Start the game
 			_start_game()
