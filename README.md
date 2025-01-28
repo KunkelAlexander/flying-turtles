@@ -1,7 +1,7 @@
 
 # 2D Multiplayer Rocket Game
 
-Welcome to the **2D Multiplayer Rocket Game**! This project is a simple, fast-paced, and fun 2-player game where players control rockets, dodge obstacles, and compete to score points by outmaneuvering each other. Built using the [Godot Engine](https://godotengine.org/), it features customizable controls, responsive physics, and a clean, modular structure.
+Welcome to the **2D Multiplayer Rocket Game**! [Play it here](https://kunkelalexander.github.io/flying-turtles/). This project is a simple, fast-paced, and hopefully at least a little fun 2-player game where players control rockets, dodge obstacles, and compete to score points by outmaneuvering each other. Built using the [Godot Engine](https://godotengine.org/).
 
 ![](scene.gif)
 ---
