@@ -10,7 +10,7 @@ extends Node
 @onready var winner_label = $Environment/WinnerScreen/WinnerLabel
 
 var score = { "player1": 0, "player2": 0 }
-var max_score = 2
+var max_score = 10
 var game_active = true
 
 
