@@ -3,12 +3,14 @@ extends Area2D
 @onready var animated_sprite = $AnimatedSprite2D  # Reference to the sprite
 @export var speed: float = 1200.0
 @export var lifetime: float = 2.0  # Fireball lifespan in seconds
+@onready var collision_shape = $CollisionShape2D
 var direction: Vector2 = Vector2.RIGHT
 
 
 # --- Setup ---
 func _ready():
 	animated_sprite.play("burn")
+	collision_shape.disabled = false
 	
 func _physics_process(delta):
 	var viewport_size = get_viewport_rect().size
@@ -29,7 +31,9 @@ func _on_body_entered(body):
 	if body.is_in_group("Player"):  # Check if the body belongs to the 'Player' group
 		body._enter_state(body.State.CRASHED)
 		
-	# Remove the energy ball upon collisio
+	collision_shape.disabled = true
+	
+	# Remove the energy ball upon collision
 	queue_free()
 	
 	pass

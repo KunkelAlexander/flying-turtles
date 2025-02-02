@@ -11,8 +11,9 @@ extends CharacterBody2D
 }  # Map player numbers to crash labels
 @onready var score_label: Label = $"../Environment/ScoreLabel"
 @onready var start_position   = $AnimatedSprite2D/start_position.global_position
-@onready var collision_walk = $CollisionShape_Walk
-@onready var collision_fly = $CollisionShape_Fly
+@onready var collision_walk    = $CollisionShape_Walk
+@onready var collision_fly     = $CollisionShape_Fly
+@onready var collision_explode = $CollisionShape_Explode
 @export var energy_ball_scene: PackedScene  # Drag the energy ball scene here
 @export var orientation: float = 1
 
@@ -21,18 +22,19 @@ var offset_distance = 50.0
 
 # Rocket parameters
 var speed = 400.0            # forward (upward) speed when under control
-var rotation_speed = 90.0    # degrees per second
+var rotation_speed = 128.0    # degrees per second
 var gravity = 400.0          # downward acceleration
 var walking_speed = 200.0    # Speed when walking
 var can_shoot = true  # Track if the player can shoot
-@export var cooldown: float = 0.3  # Cooldown duration in seconds
+@export var cooldown: float = 1.2  # Cooldown duration in seconds
+var col_shoot_timeout = 1.0
 
 # Boundaries
 var top_boundary = -50
 
 # Game States
-enum State { CONTROLLED, FALLING, CRASHED, WALKING }
-var state   # Start in the walking state
+enum State { CONTROLLED, FALLING, CRASHED, WALKING, RESPAWN }
+var state   # Start in an undefined state
 
 # Free-fall timer
 var free_fall_duration = 2.8
@@ -66,15 +68,23 @@ func _set_collision_shape(animation_name: String):
 	# Disable all collision shapes
 	collision_walk.disabled = true
 	collision_fly.disabled = true
+	collision_explode.disabled = true
 
 	# Enable the appropriate shape based on the animation
 	match animation_name:
+		"explode":
+			collision_explode.disabled = false 
+			return
 		"walk":
-			collision_walk.disabled = true
+			return
 		"fly":
 			collision_fly.disabled = false
+			return
 		"hide":
 			collision_walk.disabled = false
+			return
+		"respawn":
+			return
 
 func _initialize_position():
 	position = start_position
@@ -89,6 +99,9 @@ func _initialize_crash_label():
 func _initialize_score_label():
 	score_label.visible = true
 	score_label.text = "0:0"
+
+func _on_explode_finished():
+	_enter_state(State.RESPAWN)
 	
 # --- State Transitions ---
 func _enter_state(new_state):
@@ -98,31 +111,48 @@ func _enter_state(new_state):
 	state = new_state
 	match state:
 		State.CONTROLLED:
+			animated_sprite.play("fly")
+			can_shoot = false  # Prevent shooting
+			
+			
 			free_fall_timer = 0.0
 			velocity = Vector2.ZERO
-			animated_sprite.play("fly")
+			
+			# Wait 1 second before enabling collisions & shooting
+			await get_tree().create_timer(col_shoot_timeout).timeout
+
+			# Enable proper collision & allow shooting
 			_set_collision_shape("fly")
+			can_shoot = true
+
 		State.FALLING:
 			free_fall_timer = 0.0  # Reset the free-fall timer
 			animated_sprite.play("hide")
 			_set_collision_shape("hide")
 		State.CRASHED:
 			animated_sprite.play("explode")
+			_set_collision_shape("explode")
+			
+			animated_sprite.animation_finished.connect(_on_explode_finished, CONNECT_ONE_SHOT)
+
+		State.RESPAWN:
+			_set_collision_shape("respawn")
 			velocity = Vector2.ZERO
 			var crash_label = get_crash_label()
 			crash_label.visible = true
 			crash_label.text = "P%d crashed.\nShoot\nto restart." % [player_number]
 			base_node.update_score("player%d" % [player_number])  # Update score when Player 1 crashes
 
+			
 		State.WALKING:
+			animated_sprite.play("walk")
+			_set_collision_shape("walk")
 			# Prevent the rocket from leaving the ground
 			position.y = start_position.y
 			velocity = Vector2.ZERO
 			scale=Vector2(orientation, 1)
 			rotation_degrees = 0  # Reset to rightward orientation
 			
-			animated_sprite.play("walk")
-			_set_collision_shape("walk")
 
 
 
@@ -223,8 +253,10 @@ func _update_physics(delta):
 			if free_fall_timer >= free_fall_duration:
 				_enter_state(State.CONTROLLED)
 
-
 		State.CRASHED:
+			pass
+
+		State.RESPAWN:
 			# Wait for restart input
 			if Input.is_action_just_pressed("p%d_shoot" % [player_number]):
 				_restart_rocket()

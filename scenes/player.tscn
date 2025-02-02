@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://blevcbgd4ugyc"]
+[gd_scene load_steps=42 format=3 uid="uid://blevcbgd4ugyc"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jlpho"]
 [ext_resource type="PackedScene" uid="uid://c6x4qkj62sd04" path="res://scenes/energy_ball.tscn" id="2_s42k3"]
@@ -183,10 +183,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dv2f2")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"explode",
-"speed": 10.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -249,6 +252,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0igb"]
 size = Vector2(120.103, 74.0825)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_16gxk"]
+radius = 80.147
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(306.696, 914.318)
 collision_layer = 2
@@ -269,10 +275,12 @@ visible = false
 scale = Vector2(0.25, 0.269978)
 
 [node name="CollisionShape_Walk" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(6.06467, 17.4136)
 shape = SubResource("RectangleShape2D_m0igb")
 
 [node name="CollisionShape_Fly" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(-9.69601, -67.318, -67.696, -1.31799, 7.30399, 18.682, 100.304, -1.31799, 4.30399, -70.318, 4.30399, -86.318, 86.304, -88.318, 85.304, -119.318, -151.696, -120.318, -45.696, -109.318, 1.30399, -89.318)
+
+[node name="CollisionShape_Explode" type="CollisionShape2D" parent="."]
+position = Vector2(-12.1129, -2.10923)
+shape = SubResource("CircleShape2D_16gxk")
